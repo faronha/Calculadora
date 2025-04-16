@@ -25,7 +25,6 @@ function calcular() {
   atualizarTela();
 }
 
-// Calculadora de porcentagem
 document.querySelector('.check-select').addEventListener('click', function(){
   const choose = document.querySelector('#choose-model');
   if(choose.value == 1) {
@@ -71,6 +70,8 @@ function onlynumber(evt) {
   }
 }
 
+// onlynumber organizado por ia
+
 function toggleAccordion(button) {
   const arrow = button.querySelector('.arrow');
   const content = button.nextElementSibling;
@@ -85,3 +86,4 @@ function rest(){
 function convert(){
   window.location.href="convert.html"
 }
+

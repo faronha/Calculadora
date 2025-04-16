@@ -1,4 +1,4 @@
-// Funções para o conversor de moedas
+
 const taxasFixas = {
     "USD": { "BRL": 5.0, "EUR": 0.93, "GBP": 0.80, "JPY": 150.5, "CNY": 7.2, "CAD": 1.34, "AUD": 1.52, "CHF": 0.91, "ARS": 860 },
     "BRL": { "USD": 0.20, "EUR": 0.19, "GBP": 0.16, "JPY": 30.1, "CNY": 1.44, "CAD": 0.27, "AUD": 0.24, "CHF": 0.18, "ARS": 171 },
@@ -68,3 +68,5 @@ const taxasFixas = {
   window.onload = () => {
     createInfiniteBubbles();
   };
+
+  // grande parte refinada por ia

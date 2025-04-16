@@ -1,0 +1,1 @@
+ias foram usadas no final do codigo para organiza-lo e para identação, tambem para as funcionalidades de algumas animações, a parte logica e estrutural foi feita de forma autoral(partes feitas por ia vão ser indicadas)
