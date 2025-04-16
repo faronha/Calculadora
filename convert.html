@@ -47,8 +47,6 @@
     <button onclick="converterMoeda()">Converter</button>
     <div id="resultadoConversao" class="resultado"></div>
 
-    <hr>
-
     <label for="verificarCambio">Verificar taxa de câmbio de:</label>
     <select id="verificarCambio">
       <option value="USD">USD</option>
@@ -65,7 +63,7 @@
     <button onclick="verificarCambio()">Verificar Câmbio</button>
     <div id="resultadoCambio" class="resultado"></div>
   </div>
-  <button onclick="voltar()"></button>
+  <button class="botao" onclick="voltar()">Voltar</button>
 
   <script>
     const taxasFixas = {
@@ -128,6 +126,9 @@
     window.onload = function() {
       createInfiniteBubbles();
     };
+    function voltar(){
+    window.location.href="calc.html"
+  }
   </script>
 </body>
 </html>
