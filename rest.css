@@ -22,11 +22,11 @@ body {
   }
   input {
     padding: 8px;
-    border: 1px solid #ccc;
+
     border-radius: 8px;
   }
   button{
-    background-color: #007bff;
+    background-color: #091f2c;
     color: white;
     border: none;
     padding: 10px;
@@ -34,7 +34,7 @@ body {
     cursor: pointer;
   }
   button:hover {
-    background-color: #0056b3;
+    background-color: #1a2d41;
   }
   .resultado {
     margin-top: 12px;
@@ -44,7 +44,7 @@ body {
     font-weight: bold;
   }
   .botao2{
-    background-color: #007bff;
+    background-color: #00273d;
     color: white;
     border: none;
     padding: 10px;
@@ -52,5 +52,5 @@ body {
     cursor: pointer;
   }
   .botao2:hover {
-    background-color: #0056b3;
+    background-color: #1a2d41;
   }
