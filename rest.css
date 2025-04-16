@@ -43,15 +43,7 @@ body {
     border-radius: 8px;
     font-weight: bold;
   }
-  .botao2{
-    background-color: #00273d;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 8px;
-    cursor: pointer;
-    width: 500px;
-  }
+  
   .botao2:hover {
     background-color: #1a2d41;
   }
