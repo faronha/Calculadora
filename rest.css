@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     padding: 20px;
-    background: #00273d;
+    background: #000000;
     color: white;
   }
   .container {
@@ -50,6 +50,7 @@ body {
     padding: 10px;
     border-radius: 8px;
     cursor: pointer;
+    width: 500px;
   }
   .botao2:hover {
     background-color: #1a2d41;
