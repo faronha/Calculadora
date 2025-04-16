@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora Completa</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/ffd8b32f67.js" crossorigin="anonymous"></script>
+  <style>
+    .logo i {
+      font-size: 2em; 
+      color: #333; 
+    }
+    
+    #bubbles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1; 
+      overflow: hidden;
+    }
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(131, 170, 255, 0.2);
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+      animation: float 10s linear infinite;
+    }
+    @keyframes float {
+      0% {
+        transform: translate(0, 0);
+        opacity: 0.3;
+      }
+      50% {
+        transform: translate(50px, -100px) scale(1.2);
+        opacity: 0.6;
+      }
+      100% {
+        transform: translate(100px, -200px);
+        opacity: 0.3;
+      }
+    }
+    
+  </style>
+</head>
+<body>
+  
+  <div id="bubbles"></div>
+    
+  <div class="calculadora">
+    <div class="logo">
+      <i class="fas fa-calculator"></i>
+    </div>
+    <div class="tela" id="tela">0</div>
+    <div class="botoes">
+      <button onclick="limpar()">C</button>
+      <button onclick="voltar()">DEL</button>
+      
+      <button onclick="adicionar('/')">/</button>
+
+      <button onclick="adicionar('*')">*</button>
+      <button onclick="adicionar('1')">1</button>
+      <button onclick="adicionar('2')">2</button>
+      <button onclick="adicionar('3')">3</button>
+      <button onclick="adicionar('-')">-</button>
+      
+      <button onclick="adicionar('4')">4</button>
+      <button onclick="adicionar('5')">5</button>
+      <button onclick="adicionar('6')">6</button>
+      <button onclick="adicionar('+')">+</button>
+      <button onclick="adicionar('7')">7</button>
+      <button onclick="adicionar('8')">8</button>
+      <button onclick="adicionar('9')">9</button>
+      <button onclick="adicionar('0')">0</button>
+
+      <button class="igual" onclick="calcular()">=</button>
+    </div>
+  </div>
+    <div class="accordion">
+      <button class="accordion-toggle" onclick="toggleAccordion(this) ">
+        <span class="arrow">▶ Calculadora especifica</span>
+      </button>
+      <div class="accordion-content">
+        <div class="calc2">
+          <button class="button1" onclick="adicionar('.')">.</button>
+          <button class="button1" onclick="adicionar('(')">(</button>
+          <button class="button1" onclick="adicionar(')')">)</button>
+          <button class="button1" onclick="adicionar('**')">^</button>
+          <button class="button1" onclick="adicionar('Math.sqrt(')">√</button>
+          <button class="button1" onclick="adicionar('%')">%</button>
+        </div>
+      </div>
+    </div>
+    <button class="button2" onclick="rest()">Calculadora de restaurante</button>
+    <button class="button2" onclick="convert()">Voltar</button>
+  <script src="js.js"></script>
+  <script>
+    function createInfiniteBubbles() {
+      const container = document.getElementById("bubbles");
+      const numberOfBubbles = 90;
+      
+      for (let i = 0; i < numberOfBubbles; i++) {
+        const bubble = document.createElement("div");
+        bubble.classList.add("bubble");
+        const size = Math.random() * 6 + 4;
+        const left = Math.random() * window.innerWidth;
+        const top = Math.random() * window.innerHeight;
+        const animationDuration = `${7 + Math.random() * 2}s`;
+        const animationDelay = `${Math.random() * 5}s`;
+        bubble.style.width = `${size}px`;
+        bubble.style.height = `${size}px`;
+        bubble.style.left = `${left}px`;
+        bubble.style.top = `${top}px`;
+        bubble.style.animationDuration = animationDuration;
+        bubble.style.animationDelay = animationDelay;
+        container.appendChild(bubble);
+      }
+    }
+    window.onload = createInfiniteBubbles;
+  </script>
+</body>
+</html>

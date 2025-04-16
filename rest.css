@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background: #00273d;
+    color: white;
+  }
+  .container {
+    max-width: 400px;
+    margin: auto;
+    background: #00273d;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  h2 {
+    text-align: center;
+  }
+  label, input, button {
+    display: block;
+    width: 100%;
+    margin-bottom: 12px;
+  }
+  input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  button{
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #0056b3;
+  }
+  .resultado {
+    margin-top: 12px;
+    padding: 10px;
+    background: #e2e6ea;
+    border-radius: 8px;
+    font-weight: bold;
+  }
+  .botao2{
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .botao2:hover {
+    background-color: #0056b3;
+  }

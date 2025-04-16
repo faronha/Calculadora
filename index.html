@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tela de Boot</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: black;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    #logo-container {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      background: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      animation: fadeInOut 4s ease-in-out forwards;
+      z-index: 3;
+    }
+
+    #logo-container.hidden {
+      opacity: 0;
+    }
+
+    #logo-container img {
+      width: 200px;
+      height: auto;
+    }
+
+    @keyframes fadeInOut {
+      0% { opacity: 0; }
+      20% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    #bubbles {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: radial-gradient(ellipse at center, #414149, #1f1818);
+      z-index: 1;
+      opacity: 1;
+      transition: opacity 3s ease-in-out;
+    }
+
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(131, 170, 255, 0.2);
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+      animation: float 10s linear infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateX(0) translateY(0) scale(1);
+        opacity: 0.3;
+      }
+      50% {
+        transform: translateX(50px) translateY(-100px) scale(1.2);
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateX(100px) translateY(-200px) scale(1);
+        opacity: 0.3;
+      }
+    }
+
+    #press-ps {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      z-index: 2;
+      top: 0;
+      left: 0;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    #press-ps.visible {
+      opacity: 1;
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    #press-ps p, #press-ps img {
+      opacity: 1;
+      transition: opacity 1s ease-in-out;
+    }
+
+    #small-logo {
+      width: 50px;
+      height: auto;
+      opacity: 1;
+      margin-top: 10px;
+    }
+
+    .enter-animation {
+      position: absolute;
+      border-radius: 5px;
+      box-shadow:
+        0 0 5px rgba(255, 255, 255, 0.9),
+        0 0 10px rgba(255, 255, 255, 0.7),
+        0 0 15px rgba(255, 255, 255, 0.5);
+      opacity: 0;
+      animation: intenseWhitePulse 0.9s ease-in-out forwards;
+      pointer-events: none;
+    }
+
+    @keyframes intenseWhitePulse {
+      0% { opacity: 0; transform: scale(0.9); }
+      50% { opacity: 0.7; transform: scale(1.2); }
+      100% { opacity: 0; transform: scale(1); }
+    }
+
+    @media (max-width: 500px) {
+      #press-ps p {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="logo-container">
+    <img src="logo.png" alt="Logo Calculadora" loading="lazy" style="width: 200px; height: auto;">
+  </div>
+
+  <div id="bubbles"></div>
+
+  <div id="press-ps">
+    <p>Pressione <span id="enter-text" style="font-weight: bold; font-size: 2rem; position: relative; display: inline-block;">ENTER</span> para calcular</p>
+    <img src="logo.png" alt="Ícone Calculadora" id="small-logo" style="width: 50px; height: auto;" />
+  </div>
+  <audio id="boot-sound" src="boot.mp3" preload="auto"></audio>
+
+  <script>
+    function createInfiniteBubbles() {
+      const container = document.getElementById("bubbles");
+      const numberOfBubbles = 90;
+
+      for (let i = 0; i < numberOfBubbles; i++) {
+        const bubble = document.createElement("div");
+        bubble.classList.add("bubble");
+
+        const size = Math.random() * 6 + 4;
+        const left = Math.random() * window.innerWidth;
+        const top = Math.random() * window.innerHeight;
+        const animationDuration = `${7 + Math.random() * 2}s`;
+        const animationDelay = `${Math.random() * 5}s`;
+
+        bubble.style.width = `${size}px`;
+        bubble.style.height = `${size}px`;
+        bubble.style.left = `${left}px`;
+        bubble.style.top = `${top}px`;
+        bubble.style.animationDuration = animationDuration;
+        bubble.style.animationDelay = animationDelay;
+
+        container.appendChild(bubble);
+      }
+    }
+
+    window.onload = () => {
+      const logoFadeOutTime = 4000;
+      const bubblesStartTime = logoFadeOutTime;
+      const pressEnterStartTime = 7000;
+
+      setTimeout(() => {
+        createInfiniteBubbles();
+      }, bubblesStartTime);
+
+      setTimeout(() => {
+        const pressPS = document.getElementById("press-ps");
+        pressPS.style.display = "flex";
+        pressPS.classList.add("visible");
+      }, pressEnterStartTime);
+    };
+
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        const pressPS = document.getElementById("press-ps");
+        const pressPSParagraph = pressPS.querySelector('p');
+        const smallLogo = document.querySelector('#press-ps img');
+        const logoContainer = document.getElementById('logo-container');
+        const enterTextElement = document.getElementById("enter-text");
+        const enterTextRect = enterTextElement.getBoundingClientRect();
+        const animationDiv = document.createElement("div");
+
+        animationDiv.classList.add("enter-animation");
+        animationDiv.style.left = `${enterTextRect.left - pressPS.getBoundingClientRect().left - 5}px`;
+        animationDiv.style.top = `${enterTextRect.top - pressPS.getBoundingClientRect().top - 5}px`;
+        animationDiv.style.width = `${enterTextRect.width + 10}px`;
+        animationDiv.style.height = `${enterTextRect.height + 10}px`;
+
+        pressPS.appendChild(animationDiv);
+
+        pressPSParagraph.style.opacity = 0;
+        smallLogo.style.opacity = 0;
+
+        const sound = document.getElementById("boot-sound");
+        if (sound) sound.play().catch(() => {});
+
+        setTimeout(() => {
+          animationDiv.remove();
+          document.getElementById("bubbles").style.opacity = 0;
+          logoContainer.classList.add('hidden');
+
+          setTimeout(() => {
+            window.location.href = "calc.html";
+          }, 3000);
+        }, 1000);
+      }
+    });
+  </script>
+</body>
+</html>

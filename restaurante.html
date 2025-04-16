@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora do Dia a Dia</title>
+  <link rel="stylesheet" href="rest.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Calculadora de restaurante</h2>
+
+    <label for="conta">Valor da Conta (R$):</label>
+    <input type="number" id="conta" placeholder="Ex: 100">
+
+    <label for="gorjeta">Porcentagem da Gorjeta (%):</label>
+    <input type="number" id="gorjeta" placeholder="Ex: 10">
+
+    <button onclick="calcularGorjeta()">Calcular Gorjeta</button>
+    <div id="resultadoGorjeta" class="resultado"></div>
+
+    <hr>
+
+    <label for="total">Total da Conta (R$):</label>
+    <input type="number" id="total" placeholder="Ex: 150">
+
+    <label for="pessoas">Número de Pessoas:</label>
+    <input type="number" id="pessoas" placeholder="Ex: 3">
+
+    <button onclick="dividirConta()">Dividir Conta</button>
+    <div id="resultadoDivisao" class="resultado"></div>
+  </div>
+  <button class="button2" onclick="voltar()">Voltar</button>
+  <script src="rest.js"></script>
+</body>
+</html>
